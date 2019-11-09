@@ -1,6 +1,13 @@
 #!/usr/bin/python3
-
+from models.base_model import BaseModel
 import json
+from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
+
 
 class FileStorage():
 
@@ -18,8 +25,8 @@ class FileStorage():
     def save(self):
         dict1 = {}
         for key, value in FileStorage.__objects.items():
-            dict1[key] = value.to_dict
-        with open("{}.json".format(FileStorage.__file_path), "w") as Newdict:
+            dict1[key] = value.to_dict()
+        with open("{}".format(FileStorage.__file_path), "w") as Newdict:
             json.dump(dict1, Newdict)
 
     def reload(self):

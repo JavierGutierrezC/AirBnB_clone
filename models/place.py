@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 '''Class Place  '''
-from models.base--model import BaseModel
+from models.base_model import BaseModel
 
 
-class place(BaseModel):
+class Place(BaseModel):
     '''Class State that inherits from BaseModel '''
 
     city_id = ""
