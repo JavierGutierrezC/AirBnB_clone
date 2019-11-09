@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 
-from models import Base_Model
 import json
 
 class FileStorage():
@@ -11,8 +10,9 @@ class FileStorage():
     def all(self):
         return FileStorage.__objects
 
-    def new(self,obj):
-        key = obj.__class__.__name__.id + "." obj.id
+    def new(self, obj):
+        from models.base_model import BaseModel
+        key = obj.__class__.__name__ + "." + obj.id
         FileStorage.__objects[key] = obj
 
     def save(self):
@@ -21,3 +21,13 @@ class FileStorage():
             dict1[key] = value.to_dict
         with open("{}.json".format(FileStorage.__file_path), "w") as Newdict:
             json.dump(dict1, Newdict)
+
+    def reload(self):
+        try:
+            with open(FileStorage.__file_path, 'r') as a_file:
+                new_obj = json.load(a_file)
+                for a in new_obj.values():
+                    n_name = a["__class__"]
+                    self.new(eval(n_name)(**a))
+        except FileNotFoundError:
+            return
