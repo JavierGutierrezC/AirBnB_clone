@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# module for class base
+""" module for class base"""
 from uuid import uuid4
 from datetime import datetime
 import models
