@@ -76,6 +76,19 @@ class HBNBCommand(cmd.Cmd):
                 setattr(dict_n[obj_n], arguments[2], type(new_attribute)(arguments[3]))
                 dict_n[obj_n].save()
 
+    def do_all(self, args):
+        if args in HBNBCommand.class_list:
+            list1 = list(storage.all().values())
+            list2 = filter(lambda x: type(x) is
+                           HBNBCommand.class_list.get(args), list1)
+            print(list(map(lambda x: str(x), list2)))
+        elif args not in HBNBCommand.class_list:
+            print("** class doesn't exist **")
+        elif args == "":
+            list1 = list(storage.all().values())
+            print(list(map(lambda x: str(x), list1)))
+
+
 if __name__ == '__main__':
     interprete = HBNBCommand()
     interprete.cmdloop()
