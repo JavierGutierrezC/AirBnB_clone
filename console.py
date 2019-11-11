@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import cmd
 import models
+import shlex
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 from models.__init__ import storage
@@ -57,6 +58,28 @@ class HBNBCommand(cmd.Cmd):
                         print(dict_n[obj_n])
                     else:
                         print("** no instance found **")
+
+    def do_update(self, args):
+        arguments = shlex.split(args)
+        if len(arguments) == 0:
+            print("** class name missing **")
+        elif arguments[0] not in HBNBCommand.class_list:
+            print("** class doesn't exist **")
+        elif len(arguments) == 1:
+            print("** instance id missing **")
+        elif("{}.{}".format(arguments[0], arguments[1])) not in storage.all().keys():
+            print("** no instance found **")
+        elif len(arguments) == 2:
+            print("** attribute name missing **")
+        elif len(arguments) == 3:
+            print("** value missing **")
+        else:
+            dict_n = storage.all()
+            obj_n = arguments[0] + "." + arguments[1]
+            if obj_n in dict_n.keys():
+                new_attribute = getattr(dict_n[obj_n], arguments[2], "")
+                setattr(dict_n[obj_n], arguments[2], type(new_attribute)(arguments[3]))
+                dict_n[obj_n].save()
 
 if __name__ == '__main__':
     interprete = HBNBCommand()
