@@ -39,25 +39,20 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
     def do_show(self, args):
-        models.storage.reload()
-        if len(args) < 1:
+        arguments = args.split(" ")
+        if arguments[0] == "":
             print("** class name missing **")
-            pass
+        elif arguments[0] not in HBNBCommand.class_list:
+            print("** class doesn't exist **")
+        elif len(arguments) == 1:
+            print("** instance id missing **")
         else:
-            arguments = args.split(" ")
-            if arguments[0] not in HBNBCommand.class_list:
-                print("** class doesn't exist **")
+            dict_n = storage.all()
+            obj_n = arguments[0] + "." + arguments[1]
+            if obj_n in dict_n.keys():
+                print(dict_n[obj_n])
             else:
-                if len(arguments) < 2:
-                    print("** instance id missing **")
-                    return
-                else:
-                    dict_n = storage.all()
-                    obj_n = arguments[0] + "." + arguments[1]
-                    if obj_n in dict_n.keys():
-                        print(dict_n[obj_n])
-                    else:
-                        print("** no instance found **")
+                print("** no instance found **")
 
     def do_update(self, args):
         arguments = shlex.split(args)
