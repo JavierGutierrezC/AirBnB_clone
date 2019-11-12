@@ -89,7 +89,7 @@ class HBNBCommand(cmd.Cmd):
                 dict_n[obj_n].save()
 
     def do_all(self, args):
-        '''Prints a strin representation of all instances based or not on class name'''
+        '''Prints a string of all instances based or not on class name'''
         if args == "":
             list1 = list(storage.all().values())
             print(list(map(lambda x: str(x), list1)))
