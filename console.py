@@ -2,17 +2,22 @@
 import cmd
 import models
 import shlex
-from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 from models.__init__ import storage
-
+from models.base_model import BaseModel
+from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 ''' Class Console'''
 
 
 class HBNBCommand(cmd.Cmd):
     '''Command Cosole'''
     prompt = "(hbnb) "
-    class_list = ["BaseModel", "User"]
+    class_list = ["BaseModel", "User", "City"]
 
     def emptyline(self):
         '''Goes to the next line'''
@@ -88,6 +93,26 @@ class HBNBCommand(cmd.Cmd):
             list1 = list(storage.all().values())
             print(list(map(lambda x: str(x), list1)))
 
+    def do_destroy(self,args):
+        arguments = args.split()
+        if not args:
+            print("** class name missing **")
+        else:
+            if arguments[0] not in HBNBCommand.class_list:
+                print("** class doesn't exist **")
+            else:
+            #arguments = args.split()
+                if len(arguments) > 1:
+                    dict_n = storage.all()
+                    obj_n = arguments[0] + "." + arguments[1]
+                    #print(obj_n)
+                    if obj_n in dict_n:
+                        del dict_n[obj_n]
+                        models.storage.save()
+                    else:
+                        print("** no instance found **")
+                else:
+                    print("** instance id missing **")
 
 if __name__ == '__main__':
     interprete = HBNBCommand()
