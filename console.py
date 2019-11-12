@@ -17,7 +17,7 @@ from models.review import Review
 class HBNBCommand(cmd.Cmd):
     '''Command Cosole'''
     prompt = "(hbnb) "
-    class_list = {"BaseMdeol": BaseModel, "User": User, "State": State,
+    class_list = {"BaseModel": BaseModel, "User": User, "State": State,
                   "City": City, "Amenity": Amenity,
                   "Place": Place, "Review": Review}
 
