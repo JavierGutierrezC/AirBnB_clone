@@ -1,14 +1,16 @@
 #!/usr/bin/python3
-""" module for class base"""
+''' module for class base '''
 from uuid import uuid4
 from datetime import datetime
 import models
-#from models.engine.file_storage import FileStorage
-#from models.__init__ import storage
+# from models.engine.file_storage import FileStorage
+# from models.__init__ import storage
+
 
 class BaseModel():
-
+    """ Class base for the project """
     def __init__(self, *args, **kwargs):
+        """ to initialize """
         if kwargs:
             for key, value in kwargs.items():
                 if key == 'id':
@@ -30,14 +32,17 @@ class BaseModel():
             models.storage.new(self)
 
     def __str__(self):
+        """ str method """
         return("[{}] ({}) {}".format(
             self.__class__.__name__, self.id, self.__dict__))
 
     def save(self):
+        """ method to save the new object """
         self.updated_at = datetime.now()
         models.storage.save()
 
     def to_dict(self):
+        """ to convert the object to a dictionary """
         dict1 = dict(self.__dict__)
         dict1["__class__"] = self.__class__.__name__
         dict1["created_at"] = self.created_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
