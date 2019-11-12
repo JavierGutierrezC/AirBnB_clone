@@ -3,8 +3,6 @@
 from uuid import uuid4
 from datetime import datetime
 import models
-# from models.engine.file_storage import FileStorage
-# from models.__init__ import storage
 
 
 class BaseModel():
