@@ -86,16 +86,16 @@ class HBNBCommand(cmd.Cmd):
                 dict_n[obj_n].save()
 
     def do_all(self, args):
-        if args in HBNBCommand.class_list:
+        if args == "":
+            list1 = list(storage.all().values())
+            print(list(map(lambda x: str(x), list1)))
+        elif args in HBNBCommand.class_list:
             list1 = list(storage.all().values())
             list2 = filter(lambda x: type(x) is
                            HBNBCommand.class_list.get(args), list1)
             print(list(map(lambda x: str(x), list2)))
         elif args not in HBNBCommand.class_list:
             print("** class doesn't exist **")
-        elif args == "":
-            list1 = list(storage.all().values())
-            print(list(map(lambda x: str(x), list1)))
 
     def do_destroy(self, args):
         arguments = args.split()
