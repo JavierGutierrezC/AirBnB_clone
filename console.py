@@ -62,7 +62,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         elif len(arguments) == 1:
             print("** instance id missing **")
-        elif("{}.{}".format(arguments[0], arguments[1])) not in storage.all().keys():
+        elif("{}.{}".format(arguments[0], arguments[1]))
+        not in storage.all().keys():
             print("** no instance found **")
         elif len(arguments) == 2:
             print("** attribute name missing **")
@@ -73,7 +74,8 @@ class HBNBCommand(cmd.Cmd):
             obj_n = arguments[0] + "." + arguments[1]
             if obj_n in dict_n.keys():
                 new_attribute = getattr(dict_n[obj_n], arguments[2], "")
-                setattr(dict_n[obj_n], arguments[2], type(new_attribute)(arguments[3]))
+                setattr(dict_n[obj_n], arguments[2],
+                        type(new_attribute)(arguments[3]))
                 dict_n[obj_n].save()
 
     def do_all(self, args):
