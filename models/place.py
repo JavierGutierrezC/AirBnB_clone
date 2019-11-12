@@ -1,11 +1,10 @@
 #!/usr/bin/python3
-'''Class Place  '''
+''' Class Place  '''
 from models.base_model import BaseModel
 
 
 class Place(BaseModel):
-    '''Class State that inherits from BaseModel '''
-
+    ''' Class State that inherits from BaseModel '''
     city_id = ""
     user_id = ""
     name = ""
@@ -17,8 +16,3 @@ class Place(BaseModel):
     latitude = 0.0
     longitude = 0.0
     amenity_ids = ""
-
-#def __init__(self.)
-#super.__init__
-
-
