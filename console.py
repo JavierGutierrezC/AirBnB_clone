@@ -67,7 +67,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         elif len(arguments) == 1:
             print("** instance id missing **")
-        elif("{}.{}".format(arguments[0], arguments[1])) not in storage.all().keys():
+        elif("{}.{}".format(arguments[0], arguments[1])) \
+            not in storage.all().keys():
             print("** no instance found **")
         elif len(arguments) == 2:
             print("** attribute name missing **")
