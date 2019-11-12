@@ -67,8 +67,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         elif len(arguments) == 1:
             print("** instance id missing **")
-        elif("{}.{}".format(arguments[0], arguments[1])) \
-            not in storage.all().keys():
+        elif("{}.{}".format(arguments[0],
+                            arguments[1])) not in storage.all().keys():
             print("** no instance found **")
         elif len(arguments) == 2:
             print("** attribute name missing **")
@@ -79,7 +79,8 @@ class HBNBCommand(cmd.Cmd):
             obj_n = arguments[0] + "." + arguments[1]
             if obj_n in dict_n.keys():
                 new_attribute = getattr(dict_n[obj_n], arguments[2], "")
-                setattr(dict_n[obj_n], arguments[2], type(new_attribute)(arguments[3]))
+                setattr(dict_n[obj_n], arguments[2],
+                        type(new_attribute)(arguments[3]))
                 dict_n[obj_n].save()
 
     def do_all(self, args):
@@ -94,7 +95,7 @@ class HBNBCommand(cmd.Cmd):
             list1 = list(storage.all().values())
             print(list(map(lambda x: str(x), list1)))
 
-    def do_destroy(self,args):
+    def do_destroy(self, args):
         arguments = args.split()
         if not args:
             print("** class name missing **")
@@ -102,11 +103,9 @@ class HBNBCommand(cmd.Cmd):
             if arguments[0] not in HBNBCommand.class_list:
                 print("** class doesn't exist **")
             else:
-            #arguments = args.split()
                 if len(arguments) > 1:
                     dict_n = storage.all()
                     obj_n = arguments[0] + "." + arguments[1]
-                    #print(obj_n)
                     if obj_n in dict_n:
                         del dict_n[obj_n]
                         models.storage.save()
