@@ -21,7 +21,7 @@ class TestBaseModel(unittest.TestCase):
         old_updated = dog.updated_at
         dog.save()
 
-    def test_save_model(self):  
+    def test_save_model(self):
         """ tests to see if the return type of save is a string """
         dog = BaseModel()
         dog.save()
