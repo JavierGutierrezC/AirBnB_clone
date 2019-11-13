@@ -134,6 +134,18 @@ class HBNBCommand(cmd.Cmd):
         except:
             print("** invalid Syntax **")
 
+    def do_count(self, args):
+        """ for counts the number of instances of a class """
+        obj_n = storage.all()
+        counter = 0
+        if args in self.class_list:
+            for i in obj_n:
+                if i == args:
+                    counter += 1
+            print(counter)
+        else:
+            print("** class doesn't exist **")
+
 if __name__ == '__main__':
     interprete = HBNBCommand()
     interprete.cmdloop()
