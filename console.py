@@ -140,7 +140,7 @@ class HBNBCommand(cmd.Cmd):
         counter = 0
         if args in self.class_list:
             for i in obj_n:
-                if i == args:
+                if i[0:len(args)] == args:
                     counter += 1
             print(counter)
         else:
