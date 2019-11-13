@@ -1,4 +1,4 @@
-#!usr/bin/python3
+#!/usr/bin/python3
 """
 Unittest for place
 """
@@ -14,7 +14,7 @@ class PlaceCase(unittest.TestCase):
     def test_hasattr(self):
         """Test for attributes"""
         self.assertTrue(hasattr(self.placex, "city_id"))
-        self.assertTrue(hasattr(self.placex, "user.id"))
+        self.assertTrue(hasattr(self.placex, "user_id"))
         self.assertTrue(hasattr(self.placex, "description"))
         self.assertTrue(hasattr(self.placex, "name"))
         self.assertTrue(hasattr(self.placex, "number_rooms"))
@@ -22,7 +22,7 @@ class PlaceCase(unittest.TestCase):
         self.assertTrue(hasattr(self.placex, "max_guest"))
         self.assertTrue(hasattr(self.placex, "price_by_night"))
         self.assertTrue(hasattr(self.placex, "latitud"))
-        self.assertTrue(hasattr(self.placex, "longitud"))
+        self.assertTrue(hasattr(self.placex, "longitude"))
         self.assertTrue(hasattr(self.placex, "amenity_ids"))
         self.assertTrue(hasattr(self.placex, "id"))
         self.assertTrue(hasattr(self.placex, "created_at"))
@@ -34,7 +34,7 @@ class PlaceCase(unittest.TestCase):
         self.assertIsInstance(self.placex.user_id, str)
         self.assertIsInstance(self.placex.description, str)
         self.assertIsInstance(self.placex.number_rooms, str)
-        self.assertIsInstance(self.placex.max_guests, str)
+        self.assertIsInstance(self.placex.max_guest, str)
         self.assertIsInstance(self.placex.price_by_night, str)
         self.assertIsInstance(self.placex.latitud, str)
         self.assertIsInstance(self.placex.longitud, str)
