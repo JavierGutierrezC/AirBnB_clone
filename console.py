@@ -11,6 +11,7 @@ from models.city import City
 from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
+import re
 ''' Class Console'''
 
 
@@ -120,6 +121,18 @@ class HBNBCommand(cmd.Cmd):
                         print("** no instance found **")
                 else:
                     print("** instance id missing **")
+
+    def default(self, args):
+        """ default method for aditional functions """
+        args1 = (args.replace('.', ' ').replace('(', ' ').replace(')', ' '))
+        args2 = args1.split()
+        if len(args2) > 1:
+            cmd = args2.pop(1)
+        args3 = ' '.join(args2).replace(',', '')
+        try:
+            eval('self.do_' + cmd + '(args3)')
+        except:
+            print("** invalid Syntax **")
 
 if __name__ == '__main__':
     interprete = HBNBCommand()
