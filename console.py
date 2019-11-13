@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+''' a command line for the use of the classes'''
 import cmd
 import models
 import shlex
@@ -11,7 +12,6 @@ from models.city import City
 from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
-''' a command line for the use of the classes'''
 
 
 class HBNBCommand(cmd.Cmd):
