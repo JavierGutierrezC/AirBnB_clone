@@ -128,7 +128,6 @@ class HBNBCommand(cmd.Cmd):
         args2 = args1.split()
         if len(args2) > 1:
             cmd = args2.pop(1)
-            new_dic = re.split(r"\s(?![^{]*})", args1)
         args3 = ' '.join(args2).replace(',', '')
         try:
             eval('self.do_' + cmd + '(args3)')
