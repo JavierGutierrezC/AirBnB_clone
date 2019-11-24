@@ -50,6 +50,8 @@ h4{
     margin-left: -20%;
     visibility: hidden;
     padding-bottom: 10%;
+    position: relative;
+    z-index: 1;
 }
 .locations:hover .popover,
 .amenities:hover .popover{
